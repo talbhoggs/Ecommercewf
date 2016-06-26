@@ -97,11 +97,12 @@ public class HomeController {
 		MultipartFile productImage = product.getProductImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		
-		String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"images"+File.separator+product.getProductId()+".png";
+		String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"resources"+File.separator+"images"+File.separator+product.getProductId()+".png";
 		//String imagePath = rootDirectory +"\\WEB-INF\\resources\\images\\"+product.getProductId()+".png";		
+		System.out.println("Image Path " + path.toString());
 		path = Paths.get(imagePath);
 		
-		System.out.println("Image Path " + path.toString());
+		
 		
 		if(productImage != null && !productImage.isEmpty()) {
 			try {
@@ -120,11 +121,9 @@ public class HomeController {
 		
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		
-		String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"images"+File.separator+productId+".png";
+		String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"resources"+File.separator+"images"+File.separator+productId+".png";
 		//String imagePath = rootDirectory +"\\WEB-INF\\resources\\images\\"+productId+".png";	
 		path = Paths.get(imagePath);
-		
-		path = Paths.get(rootDirectory +"\\WEB-INF\\resources\\images\\"+productId+".png");
 		
 		
 		if(Files.exists(path)) {
@@ -159,8 +158,12 @@ public class HomeController {
 		
 		MultipartFile productImage = product.getProductImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+		String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"resources"+File.separator+"images"+File.separator+product.getProductId()+".png";
+		//String imagePath = rootDirectory +"\\WEB-INF\\resources\\images\\"+product.getProductId()+".png";	
+		path = Paths.get(imagePath);
 		
-		path = Paths.get(rootDirectory +"\\WEB-INF\\resources\\images\\"+product.getProductId()+".png");
+		
+		
 		
 		if(productImage != null && !productImage.isEmpty()) {
 			try {
