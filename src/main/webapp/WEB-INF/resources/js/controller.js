@@ -1,19 +1,16 @@
 var cartApp = angular.module("cartApp", []);
 
-var rootApp = "/ecommercewf";
-rootApp = "";
-
 cartApp.controller("cartCtrl", function($scope, $http){
 		console.log("LOG");
 		$scope.refreshCart = function(cartId) {
 				
-			$http.get(rootApp+"/rest/cart/"+ $scope.cartId).success(function(data){
+			$http.get("/rest/cart/"+ $scope.cartId).success(function(data){
 				$scope.cart = data;
 			});
 		};
 		
 		$scope.clearCart = function(){
-			$http.delete(rootApp+"/rest/cart/" +$scope.cartId).success($scope.refreshCart($scope.cartId));
+			$http.delete("/rest/cart/" +$scope.cartId).success($scope.refreshCart($scope.cartId));
 	    };
 
 	    $scope.initCartId = function(cartId){
@@ -23,14 +20,14 @@ cartApp.controller("cartCtrl", function($scope, $http){
 	    
 	    $scope.addToCart = function(productId){
 	    	
-	        $http.put(rootApp+'/rest/cart/add/' + productId).success(function (){
+	        $http.put('/rest/cart/add/' + productId).success(function (){
 	            alert('Product successfully added to the cart!');
 	        });
 	        
 	    };
 
 	    $scope.removeFromCart = function(productId){
-	        $http.put(rootApp+'/rest/cart/remove/' + productId).success(function(data){
+	        $http.put('/rest/cart/remove/' + productId).success(function(data){
 	           $scope.refreshCart();
 	        });
 	    };

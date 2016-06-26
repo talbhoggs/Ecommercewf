@@ -97,9 +97,11 @@ public class HomeController {
 		MultipartFile productImage = product.getProductImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		
-		path = Paths.get(rootDirectory +"\\WEB-INF\\resources\\images\\"+product.getProductId()+".png");
+		String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"images"+File.separator+product.getProductId()+".png";
+		//String imagePath = rootDirectory +"\\WEB-INF\\resources\\images\\"+product.getProductId()+".png";		
+		path = Paths.get(imagePath);
 		
-		System.out.println(">>>>>>> " + path.toString());
+		System.out.println("Image Path " + path.toString());
 		
 		if(productImage != null && !productImage.isEmpty()) {
 			try {
@@ -118,7 +120,12 @@ public class HomeController {
 		
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		
+		String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"images"+File.separator+productId+".png";
+		//String imagePath = rootDirectory +"\\WEB-INF\\resources\\images\\"+productId+".png";	
+		path = Paths.get(imagePath);
+		
 		path = Paths.get(rootDirectory +"\\WEB-INF\\resources\\images\\"+productId+".png");
+		
 		
 		if(Files.exists(path)) {
 			try {
