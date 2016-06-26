@@ -1,6 +1,6 @@
 var cartApp = angular.module("cartApp", []);
 
-var rootApp = "/camper-ecom"
+var rootApp = "/ecommercewf"
 
 cartApp.controller("cartCtrl", function($scope, $http){
 		console.log("LOG");
