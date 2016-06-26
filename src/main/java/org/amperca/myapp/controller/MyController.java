@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MyController {
-
+	/*
+	 * IMPORTANT!
+	 * Click Maven dependencies under Order and Export
+	 * 
+	 */
     @RequestMapping("/hello")
     public String helloWorld(Model model) {
 		System.out.println("TESTING!!!");
