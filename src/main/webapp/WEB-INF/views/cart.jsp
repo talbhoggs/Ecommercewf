@@ -22,10 +22,10 @@
 						<th>Action</th>
 					</tr>
 					<tr ng-repeat="item in cart.cartItem">
-						<td>{{item.product.productName}}</td>
-						<td>{{item.product.productPrice}}</td>
-						<td>{{item.quantity}}</td>
-						<td>{{item.totalPrice * item.quantity}}</td>
+						<td><span ng-bind="item.product.productName" /></td>
+						<td><span ng-bind="item.product.productPrice" /></td>
+						<td><span ng-bind="item.quantity" /></td>
+						<td><span ng-bind="item.totalPrice * item.quantity" /></td>
 						<td><a href="#" class="label label-danger"
 							ng-click="removeFromCart(item.product.productId)"><span
 								class="glyphicon glyphicon-remove"></span>remove</a></td>
@@ -34,7 +34,7 @@
 						<th></th>
 						<th></th>
 						<th>Grand Total</th>
-						<th>{{cart.grandTotal}}</th>
+						<th><span ng-bind="cart.grandTotal" /></th>
 						<th></th>
 					</tr>
 				</table>

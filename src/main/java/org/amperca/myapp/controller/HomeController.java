@@ -95,18 +95,18 @@ public class HomeController {
 		productDao.addProduct(product);
 		
 		MultipartFile productImage = product.getProductImage();
-		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		
-		String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"resources"+File.separator+"images"+File.separator+product.getProductId()+".png";
+		String imagePath = request.getSession().getServletContext().getRealPath("/images");
+		File file = new File(imagePath, product.getProductId()+".png");
+		//String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"resources"+File.separator+"images"+File.separator+product.getProductId()+".png";
 		//String imagePath = rootDirectory +"\\WEB-INF\\resources\\images\\"+product.getProductId()+".png";		
-		System.out.println("Image Path " + path.toString());
-		path = Paths.get(imagePath);
+		System.out.println("Image Path " + imagePath);
+		//path = Paths.get(imagePath);
 		
 		
 		
 		if(productImage != null && !productImage.isEmpty()) {
 			try {
-				productImage.transferTo(new File(path.toString()));
+				productImage.transferTo(file);
 			} catch (Exception ex) {
 				ex.printStackTrace();
 				throw new RuntimeException("Product image saving failed!");
@@ -117,16 +117,17 @@ public class HomeController {
 	
 	@RequestMapping("/productList/deleteProduct/{productId}")
 	public String deleteProduct(@PathVariable int productId, Model model, HttpServletRequest request) {
+		String imagePath = request.getSession().getServletContext().getRealPath("/images");
+		File file = new File(imagePath, productId+".png");
 		
+		//String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		
-		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		
-		String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"resources"+File.separator+"images"+File.separator+productId+".png";
+		//String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"resources"+File.separator+"images"+File.separator+productId+".png";
 		//String imagePath = rootDirectory +"\\WEB-INF\\resources\\images\\"+productId+".png";	
-		path = Paths.get(imagePath);
+		//path = Paths.get(imagePath);
 		
 		
-		if(Files.exists(path)) {
+		if(file.exists()) {
 			try {
 				Files.delete(path);
 			} catch (IOException e) {
@@ -157,17 +158,21 @@ public class HomeController {
 		}
 		
 		MultipartFile productImage = product.getProductImage();
-		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"resources"+File.separator+"images"+File.separator+product.getProductId()+".png";
+		
+		String imagePath = request.getSession().getServletContext().getRealPath("/images");
+		File file = new File(imagePath, product.getProductId()+".png");
+		
+		//String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+		//String imagePath = rootDirectory + File.separator + "WEB-INF"+File.separator+"resources"+File.separator+"images"+File.separator+product.getProductId()+".png";
 		//String imagePath = rootDirectory +"\\WEB-INF\\resources\\images\\"+product.getProductId()+".png";	
-		path = Paths.get(imagePath);
+		//path = Paths.get(imagePath);
 		
 		
 		
 		
 		if(productImage != null && !productImage.isEmpty()) {
 			try {
-				productImage.transferTo(new File(path.toString()));
+				productImage.transferTo(file);
 			} catch (Exception ex) {
 				ex.printStackTrace();
 				throw new RuntimeException("Product image saving failed!");

@@ -15,6 +15,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	<mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"/>
+	<mvc:resources location="/images/" mapping="/images/**"/>
 	
 	<tx:annotation-driven/>
 </beans>

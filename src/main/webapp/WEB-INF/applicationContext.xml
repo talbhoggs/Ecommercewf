@@ -10,16 +10,15 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		
+		<!-- dev -->
 		<property name="url" value="jdbc:mysql://127.3.66.2:3306/ecommercewf" />
 		<property name="username" value="adminTgxDT2n" />
 		<property name="password" value="4djUWP7EuWdR" /> 
+		  <!-- local
+		  <property name="url" value="jdbc:mysql://127.0.0.1:3306/ecommerce" /> 
+		  <property name="username" value="root" /> 
+		  <property name="password" value="root" />  -->
 		
-		<!-- 
-		  <property name="url" value="jdbc:mysql://127.0.0.1:3306/ecommerce" 
-			/> <property name="username" value="root" /> <property name="password" value="root" 
-			/> 
-			-->
 		<!-- 127.3.66.2:3306 adminTgxDT2n 4djUWP7EuWdR https://ecommercewf-amperca.rhcloud.com/phpmyadmin/ -->
 	</bean>
 
